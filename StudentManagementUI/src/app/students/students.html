@@ -1,0 +1,99 @@
+<h2>Student Management</h2>
+
+<table cellpadding="8">
+
+    <tr>
+        <td>Student ID</td>
+        <td>
+            <input type="number"
+                   [(ngModel)]="student.studentId">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Student Name</td>
+        <td>
+            <input type="text"
+                   [(ngModel)]="student.studentName">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Email</td>
+        <td>
+            <input type="email"
+                   [(ngModel)]="student.email">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Age</td>
+        <td>
+            <input type="number"
+                   [(ngModel)]="student.age">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Course</td>
+        <td>
+            <input type="text"
+                   [(ngModel)]="student.course">
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <button (click)="saveStudent()">
+                {{ isEdit ? 'Update' : 'Save' }}
+            </button>
+
+            <button (click)="clear()">
+                Clear
+            </button>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+
+<h2>Student List</h2>
+
+<table border="1" cellpadding="10" width="100%">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Created Date</th>
+        <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let s of students">
+
+        <td>{{s.studentId}}</td>
+        <td>{{s.studentName}}</td>
+        <td>{{s.email}}</td>
+        <td>{{s.age}}</td>
+        <td>{{s.course}}</td>
+        <td>{{s.createdDate | date:'dd/MM/yyyy'}}</td>
+
+        <td>
+
+            <button (click)="edit(s)">
+                Edit
+            </button>
+
+            <button (click)="delete(s.studentId)">
+                Delete
+            </button>
+
+        </td>
+
+    </tr>
+
+</table>
